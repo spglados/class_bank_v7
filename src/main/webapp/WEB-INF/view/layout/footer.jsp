@@ -10,6 +10,9 @@
   <p>Footer</p>
 </div>
 
+	</div>
+</div>
+
 </body>
 </html>
     
