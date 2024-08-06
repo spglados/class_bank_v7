@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 public class RedirectException extends RuntimeException{
 
-	private HttpStatus status;
+	private HttpStatus status; // 오류 코드 받아와야 하기때문에
 	
 	// throw new RedirectException( , )
 	public RedirectException(String message, HttpStatus status) {

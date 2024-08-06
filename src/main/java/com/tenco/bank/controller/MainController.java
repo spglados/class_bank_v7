@@ -1,8 +1,13 @@
 package com.tenco.bank.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.tenco.bank.handler.exception.DataDeliveryException;
+import com.tenco.bank.handler.exception.RedirectException;
 
 @Controller  // IoC 대상(싱글톤 패턴 관리가 된다.) --> 제어의 역전  
 public class MainController {
@@ -21,4 +26,40 @@ public class MainController {
 		// suffix: .jsp
 		return "/main";
 	}	
+	
+	// todo - 삭제 예정
+	// 주소 설계
+	// http://localhost:8080/error-test1/true
+	// http://localhost:8080/error-test1/false
+	
+	@GetMapping("/error-test1")
+	public String errorPage() {
+		if(true) {
+			throw new RedirectException("잘못된 요청입니다.", HttpStatus.NOT_FOUND);
+		}
+	
+		return "main";
+	}
+	
+	// http://localhost:8080/error-test2
+	@GetMapping("/error-test2")
+	public String errorData2() {
+		if(true) {
+			throw new DataDeliveryException("잘못된 데이터 입니다.", HttpStatus.BAD_REQUEST);
+		}
+	
+		return "main";
+	}
+	
+	@GetMapping("/error-test3")
+	public String errorData3() {
+		if(true) {
+			throw new DataDeliveryException("인증 안된 사용자 입니다.", HttpStatus.UNAUTHORIZED);
+		}
+	
+		return "main";
+	}
+
+	
 }
+
