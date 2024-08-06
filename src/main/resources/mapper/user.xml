@@ -6,10 +6,10 @@
     <!-- 반드시! 세미콜론을 제거해야 한다. -->
     <!-- User-insert() 기능 구현하기 -->
     <!-- id는 매칭되어있는 인터페이스의 메서드 명과 같아야 한다. -->
-    <insert id="insert">
-        insert into user_tb(username, password, fullname, created_at)
-        values( #{username}, #{password}, #{fullname}, #{createdAt} )
-    </insert>
+   	<insert id="insert">
+		insert into user_tb(username, password, fullname, created_at) 
+		values( #{username}, #{password}, #{fullname}, now())
+	</insert>
 
     
     <update id="updateById">
