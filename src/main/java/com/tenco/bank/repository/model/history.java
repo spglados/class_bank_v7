@@ -9,17 +9,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
 public class History {
-	
-	private Integer id;
-	private String number;
-	private String password;
-	private Long balance;
-	private Integer userId;
-	private Timestamp createdAt;
-
+    private Integer id;
+    private Long amount;
+    private Long wBalance;
+    private Long dBalance;
+    private Integer wAccountId;
+    private Integer dAccountId;
+    private Timestamp createdAt;
 }
