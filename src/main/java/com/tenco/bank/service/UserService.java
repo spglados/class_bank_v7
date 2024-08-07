@@ -65,13 +65,10 @@ public class UserService {
 			throw new DataDeliveryException("아이디 혹은 비밀번호가 틀렸습니다.", HttpStatus.BAD_REQUEST);
 		}
 		
-	
-		
 		// 세션 메모리에 등록 처리
 		
 		return userEntity;
 	}
-	
 	
 }
 

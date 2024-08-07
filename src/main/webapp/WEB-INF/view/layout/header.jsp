@@ -37,7 +37,7 @@
 						<c:choose>
 							<c:when test="${principal != null}">
 								<%-- 사용자가 로그인 상태 --%>
-							<li class="nav-item"><a class="nav-link" href="/user/logout">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link" href="/user/logout">로그아웃</a></li>
 							</c:when>
 							<c:otherwise>
 								<%-- 사용자가 로그인 안된 상태 --%>
