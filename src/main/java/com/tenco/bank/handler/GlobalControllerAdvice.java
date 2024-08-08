@@ -71,7 +71,6 @@ public class GlobalControllerAdvice {
 		modelAndView.addObject("statusCode", e.getStatus().value());
 		modelAndView.addObject("message", e.getMessage());
 		return modelAndView; // 페이지 변환 + 내려줌
-		
 	}
 	
 	
