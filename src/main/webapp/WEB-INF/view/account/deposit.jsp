@@ -18,7 +18,7 @@
 			<input type="text" class="form-control" placeholder="Enter account number" id="dAccountNumber" name="dAccountNumber" value="1111">
 		</div>
 		<div class="text-right">
-			<button type="submit" class="btn btn-primary">입금 요청</button>
+			<button type="submit" class="btn btn-primary">입금</button>
 		</div>
 	</form>
 
