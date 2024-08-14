@@ -32,5 +32,13 @@
 		select * from account_tb where id = #{accountId}
 	</select>
 	
+	<select id="findAccountByAccountId"  resultType="com.tenco.bank.repository.model.Account">
+		select * from account_tb where user_id = #{accountId} limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="countByAccountId"  resultType="integer">
+		select count(*) from account_tb where user_id = #{accountId}
+	</select>
+	
 </mapper>
 

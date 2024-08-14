@@ -38,6 +38,28 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
+	<!-- Pagination -->
+		<div class="d-flex justify-content-center" >
+			<ul class="pagination">
+				<!-- Previous Page Link -->
+				<li class="page-item <c:if test='${currentPage == 1}'>disabled</c:if>">
+					<a class="page-link" href="?page=${currentPage - 1}&size=${size}">Previous</a>
+				</li>
+				
+				<!-- Page Numbers -->
+				<c:forEach begin="1" end="${totalPages}" var="page">
+				<li class="page-item <c:if test='${page == currentPage}'>active</c:if>">
+					<a class="page-link" href="?page=${page}&size=${size}">${page}</a>
+				</li>
+				</c:forEach>
+				
+				<!-- Next Page Link -->
+				<li class="page-item <c:if test='${currentPage == totalPages}'>disabled</c:if>">
+					<a class="page-link" href="?type=${type}&page=${currentPage + 1}&size=${size}">Next</a>
+				</li>
+			</ul>
+					
+		</div>
 
 </div>
 <!-- end ofcol-sm-8-->

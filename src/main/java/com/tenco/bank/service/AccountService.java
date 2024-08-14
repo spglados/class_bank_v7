@@ -240,4 +240,22 @@ public class AccountService {
 		
 		return historyRepository.countByAccountIdAndType(type, accountId);
 	}
+	
+	
+	// 페이징
+	//
+	//
+	public List<Account> readAccountListByAccountId(Integer accountId, int page, int size){
+		List<Account> list = new ArrayList<>();
+		int limit = size;
+		int offset = (page - 1) * size;
+		list = accountRepository.findAccountByAccountId(accountId, limit, offset);
+		return list;
+	}
+	
+	public Integer countAccountListByAccountId(Integer accountId) {
+		return accountRepository.countByAccountId(accountId);
+	}
+	
+	
 }

@@ -39,7 +39,6 @@ public class AccountController {
 	private final HttpSession session;
 	private final AccountService accountService;
 
-
 	/**
 	 * 계좌 생성 페이지 요청 주소 설계 : http://localhost:8080/account/save
 	 * 
@@ -82,23 +81,38 @@ public class AccountController {
 		return "redirect:/account/list";
 	}
 
+
 	/**
 	 * 계좌 목록 화면 요청 주소설계 : http://localhost:8080/account/list, ..../
 	 * 
 	 * @return list.jsp
 	 */
-	@GetMapping({ "/list", "/" })
-	public String listPage(Model model, @SessionAttribute(Define.PRINCIPAL) User principal) {
+	@GetMapping({ "/list" })
+	public String listPage(@RequestParam(name ="page", defaultValue = "1" )  int page,
+							 @RequestParam(name ="size", defaultValue = "3" )  int size,
+							 Model model, @SessionAttribute(Define.PRINCIPAL) User principal) {
 
 		// 2. 유효성 검사
 		// 3. 서비스 호출
-		List<Account> accountList = accountService.readAccountListByUserId(principal.getId());
+		System.out.println("1111");
+		List<Account> accountList = accountService.readAccountListByAccountId(principal.getId(), page, size);
 		if (accountList.isEmpty()) {
 			model.addAttribute("accountList", null);
 		} else {
 			model.addAttribute("accountList", accountList);
 		}
-
+		
+		int totalRecords = accountService.countAccountListByAccountId(principal.getId());
+		int totalPages = (int)Math.ceil((double)totalRecords / size);
+		
+		Account account = accountService.readAccountById(principal.getId());
+		
+		model.addAttribute("account", account);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("size", size);
+		
+		
 		// JSP 데이트를 넣어 주는 방법
 		return "account/list";
 	}
